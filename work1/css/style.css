@@ -1,0 +1,25 @@
+body {
+  background: #ffffff;
+}
+
+#text {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+#stage {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+#despall {
+	margin: auto;
+	/*position: absolute;*/
+	/*left: 50%;*/
+    /*top:50%;*/
+    line-height: 500px;
+    width: 600px;
+	text-align: center;
+}
