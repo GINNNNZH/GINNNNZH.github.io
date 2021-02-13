@@ -37,7 +37,7 @@
             var img = new Image();
             var x = window.innerWidth*Math.random();
             var y = window.innerHeight*Math.random();
-            img.src = "img1/" + Math.floor(Math.random()*imgnum) + ".png";
+            img.src = "img/" + Math.floor(Math.random()*imgnum) + ".png";
             var appp = new createjs.Bitmap(img);
             appp.x=x;
             appp.y=y;
