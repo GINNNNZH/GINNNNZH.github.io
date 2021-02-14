@@ -14,12 +14,22 @@ body {
   padding: 0;
 }
 
+#kuangkuang {
+  margin: auto;
+  line-height: 200px;
+  width: 800px;
+  text-align: center;
+}
+
 #despall {
-	margin: auto;
-	/*position: absolute;*/
-	/*left: 50%;*/
-    /*top:50%;*/
-    line-height: 500px;
-    width: 600px;
-	text-align: center;
+  line-height: 20px;
+  width: 800px;
+}
+
+#gogo {
+  position: fixed;
+  bottom: 20px;
+  right: 10%;
+  padding:.5rem 1rem;
+  border-radius:4px;
 }

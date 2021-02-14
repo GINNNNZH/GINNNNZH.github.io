@@ -1,8 +1,9 @@
 (function(){
-    var stage, textStage;
-    var circles, textPixels, kissed ,apps,snowed,despIndex=1;
-    var offsetX, offsetY, text;
-    var imgnum=24,appnum=1,despnum=3,intnum;
+    var stage,textStage;
+    var circles,textPixels,strArray,kissed,apps,snowed;
+    var despIndex=0,endSnowIndex=0;
+    var offsetX,offsetY,text;
+    var imgnum=24,appnum=1,despnum=0,intnum;
     var input="👤";
     var scale1=0.09 ,scale2=0.03;
     var fontsize=400;
@@ -13,6 +14,7 @@
         addListeners();
     }
     function initStage() {
+        $("#gogo").hide();
         input=input.toUpperCase();
         offsetX = (window.innerWidth-fontsize)/2;
         // offsetY = (window.innerHeight-fontsize)/2;
@@ -32,6 +34,7 @@
     }
     //加入很多app
     function initCircles() {
+        strArray = [];
         circles = [];
         for(var i=0; i<appnum; i++) {
             var img = new Image();
@@ -73,6 +76,11 @@
         else if(dir == 'down'){
             //todo
             c.tween = TweenLite.to(c, Math.random()*2+1, {x: c.x, y: window.innerHeight, ease:Quad.easeInOut, alpha: 0.4 + Math.random()*0.5, scaleX: scale2+Math.random()*(scale1-scale2), scaleY: scale2+Math.random()*(scale1-scale2), onComplete: function(){
+                // showDesp();
+            }});
+        }
+        else if(dir == 'enddown'){
+            c.tween = TweenLite.to(c, Math.random()*10+10, {x: c.x, y: window.innerHeight, ease:Quad.easeInOut, alpha: 0.2 + Math.random()*0.5, scaleX: scale2+Math.random()*(scale1-scale2), scaleY: scale2+Math.random()*(scale1-scale2), onComplete: function(){
                 // showDesp();
             }});
         }
@@ -139,16 +147,36 @@
             dynamicGo(circles[i],'down');
         }
     }
-    //最后展示的文字
+    function endSnow(){
+        circles[endSnowIndex%appnum].x=window.innerWidth*Math.random();
+        circles[endSnowIndex%appnum].y=-5;
+        dynamicGo(circles[endSnowIndex%appnum],'enddown');
+        if(endSnowIndex<=10)console.log(circles[endSnowIndex]);
+        endSnowIndex++;
+        setTimeout(endSnow,300);
+    }
+    // 最后展示的文字s
     function showDesp(){
-        $("#desp"+despIndex).fadeIn();
-        // var de=document.getElementById("desp"+despIndex);
-        // console.log(de.style);
-        document.getElementById("desp"+despIndex).style.display=" ";
-        // de.style.padding="10px";
-        // console.log(de.style);
+        document.getElementById("p"+despIndex).style.display="none";
+        document.getElementById("p"+despIndex).innerText=strArray[despIndex];
+        $("#p"+despIndex).fadeIn(1500);
         despIndex++;
-        if(despIndex<=despnum)setTimeout(showDesp,2000);
+        if(despIndex==despnum-1){
+            $("#gogo").fadeIn(1500);
+            setTimeout(endSnow,300);
+        }
+        if(despIndex<despnum)setTimeout(showDesp,1500);
+    }
+    function dealWithWords(){
+        var strr=document.getElementById("desp").innerText;
+        strArray=strr.split(/[(\r\n)\r\n]+/);
+        despnum=strArray.length;
+        for(var i=0;i<despnum;i++){
+            var despchild=document.createElement("p");
+            despchild.id="p"+i;
+            despchild.innerText=" ";
+            document.getElementById("despall").appendChild(despchild);
+        }
     }
     //点击页面监听
     function addListeners() {
@@ -159,10 +187,10 @@
                 if(snowed==false){
                     snow();
                     snowed=true;
-                    setTimeout(showDesp,2000);
+                    dealWithWords();
+                    setTimeout(showDesp,1500);
                 }
                 // kissed=false;
-                //下落
             }
             else{
                 // createText(input);
@@ -170,5 +198,7 @@
             }
         }
     }
-    window.onload = function() { bobobo() };
+    window.onload = function() { 
+        bobobo() 
+    };
 })();
