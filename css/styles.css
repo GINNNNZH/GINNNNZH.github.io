@@ -3,6 +3,11 @@ body {
   background-color: white;
 }
 
+img {
+  width: 100%;
+  margin: auto;
+}
+
 
 .blog-post-title a {
   color: #637FFF;
@@ -259,14 +264,14 @@ li a:hover {
   /* box-shadow: 0 0 8px 8px #eff0f6 inset; */
 }
 
-.blog-excerpt > .image-wrapper > img {
+.blog-excerpt > .image-wrapper > a > img {
   width: 100%;
   height: 100%;
   margin: 12px;
   transition: all .4s ease-in-out;
 }
 
-.blog-excerpt > .image-wrapper > img:hover {
+.blog-excerpt > .image-wrapper > a > img:hover {
   width: 100%;
   height: 100%;
   margin: 12px;
@@ -306,7 +311,13 @@ li a:hover {
 }
 
 .article > .article-content {
+  font-family: 'Noto Serif SC', serif;
   padding-bottom: 60px;
+}
+
+.article > .article-content > p > img {
+  width: 100%;
+  margin: auto;
 }
 
 .article > .hr-divide {
