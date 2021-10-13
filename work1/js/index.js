@@ -14,7 +14,7 @@
         addListeners();
     }
     function initStage() {
-        $("#gogo").hide();
+        // $("#gogo").hide();
         input=input.toUpperCase();
         offsetX = (window.innerWidth-fontsize)/2;
         // offsetY = (window.innerHeight-fontsize)/2;
@@ -162,7 +162,7 @@
         $("#p"+despIndex).fadeIn(1500);
         despIndex++;
         if(despIndex==despnum-1){
-            $("#gogo").fadeIn(1500);
+            // $("#gogo").fadeIn(1500);
             setTimeout(endSnow,300);
         }
         if(despIndex<despnum)setTimeout(showDesp,1500);

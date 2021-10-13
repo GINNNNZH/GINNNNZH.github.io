@@ -11,3 +11,13 @@
     background-image: url('../image/wow.png');
     background-size: 80px 80px;
 }
+
+#gogo {
+  display: block;
+  position: fixed;
+  top: 400px;
+  /*bottom: 20px;*/
+  /*right: 10%;*/
+  padding:.5rem 1rem;
+  border-radius:4px;
+}
